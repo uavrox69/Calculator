@@ -15,8 +15,7 @@ namespace Calculator
         static void Main(string[] args)
         {
             double sum;//will need sum later on with culumitive
-
-            CalcMethods work = new CalcMethods();
+           
             Parsing sent = new Parsing();
             string pattern = "[0-9.]";
             Regex r = new Regex(pattern);
@@ -24,7 +23,7 @@ namespace Calculator
             Console.WriteLine("Enter a equation");
 
             string test = Console.ReadLine();
-            test = work.ElimSpace(test);
+            test = sent.ElimSpace(test);
             sum = sent.ReadString(test, r, parsespot);            
 
             Console.WriteLine(sum);

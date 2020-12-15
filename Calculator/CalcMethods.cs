@@ -15,16 +15,7 @@ namespace Calculator
             nums = new List<double>();
             signs = new List<char>();
 
-        }
-        public string ElimSpace(string unFixed)
-        {
-            string pattern = "\\s";
-            string sub = "";
-            Regex r = new Regex(pattern);
-            string newS = r.Replace(unFixed, sub);
-
-            return newS;
-        }
+        }       
         public double Addition(double a, double b)
         {
             double sum = a + b;

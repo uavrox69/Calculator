@@ -20,11 +20,15 @@ namespace Calculator
             string nonConNum = "";
             double stringSum = 0;
             double a = 0;
+            
             Parsing paran = new Parsing();
             CalcMethods work = new CalcMethods();
+            
             List<double> numsL = new List<double>();
             List<char> signL = new List<char>();
+           
             r = pass;
+            
             for (int x = place; x <= stringSize - 1; x++)
             {
                 if (r.IsMatch(equation[x].ToString()))
@@ -38,6 +42,7 @@ namespace Calculator
                         numsL.Add(a);
                     }
                 }
+                
                 else if (equation[x].ToString() == "(" && r.IsMatch(equation[x - 1].ToString()))
                 {
                     a = Convert.ToDouble(nonConNum);
@@ -49,12 +54,14 @@ namespace Calculator
                     x = Program.parsespot;
 
                 }
+                
                 else if (equation[x].ToString() == "(")
                 {
                     place = x + 1;
                     numsL.Add(paran.ReadString(equation, pass, place));
                     x = Program.parsespot;
                 }
+                
                 else if (equation[x].ToString() == ")")
                 {
                     if (nonConNum != "")
@@ -73,6 +80,7 @@ namespace Calculator
                     }
                     break;
                 }
+               
                 else
                 {
                     if ( nonConNum != "")
@@ -85,11 +93,22 @@ namespace Calculator
                     signL.Add(equation[x]);
                 }
             }
+            
             work.FillList(numsL, signL);
             stringSum = work.DoMath();
+            
             return stringSum;
 
         }
-    
+        public string ElimSpace(string unFixed)
+        {
+            string pattern = "\\s";
+            string sub = "";
+            Regex r = new Regex(pattern);
+            string newS = r.Replace(unFixed, sub);
+
+            return newS;
+        }
+
     }
 }
